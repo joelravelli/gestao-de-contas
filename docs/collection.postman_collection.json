@@ -1,0 +1,461 @@
+{
+	"info": {
+		"_postman_id": "d2f7a247-cfcf-4b3c-af8f-a3586dc10c3d",
+		"name": "collection-teste-Joel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Insert Pessoa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Joel Ravelli Junior\",\n    \"cpf\": \"41234131232\",\n    \"dataNascimento\": \"2016-05-18T00:00:00.000Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/pessoa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Pessoa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\": \"81234131231\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/pessoa/5f7d0ef6d93bc64cb38180c8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"pessoa",
+						"5f7d0ef6d93bc64cb38180c8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pessoa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/pessoa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pessoa por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/pessoa/5f7d0ef6d93bc64cb38180c8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"pessoa",
+						"5f7d0ef6d93bc64cb38180c8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll Conta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/conta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"conta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Conta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idPessoa\": \"5f84bfcd6412c581e865da26\",\n    \"limiteSaqueDiario\": 500.00,\n    \"flagAtivo\": true,\n    \"tipoConta\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/conta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"conta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deposito transacao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idConta\": \"5f861ff9bb499d2ef7ebf592\",\n    \"valor\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/transacao/deposito",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"transacao",
+						"deposito"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Saque transacao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idConta\": \"5f84bffa6412c581e865da27\",\n    \"valor\": -500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/transacao/saque",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"transacao",
+						"saque"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get transacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/transacao",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"transacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Extrato por periodo transacao",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\": \"2020-10-10T03:24:00\",\n    \"endDate\": \"2020-10-13T17:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/transacao/extrato/5f825405247ed682a9435448",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"transacao",
+						"extrato",
+						"5f825405247ed682a9435448"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Saldo transacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/transacao/saldo/5f861ff9bb499d2ef7ebf592",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"transacao",
+						"saldo",
+						"5f861ff9bb499d2ef7ebf592"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bloqueio de Conta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"flagAtivo\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/conta/bloqueio/5f84bffa6412c581e865da27",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"conta",
+						"bloqueio",
+						"5f84bffa6412c581e865da27"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All transacoes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/transacao",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"transacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete pessoa",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/transacao",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"transacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete conta",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/conta/5f825405247ed682a9435448",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"conta",
+						"5f825405247ed682a9435448"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cria uma Conta (jeito certo)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idPessoa\": \"5f84bfcd6412c581e865da26\",\n    \"limiteSaqueDiario\": 500.00,\n    \"flagAtivo\": true,\n    \"tipoConta\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/conta/criar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"conta",
+						"criar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All transacoes by idConta",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/transacao/all/5f8635abe64640581eb902e7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"transacao",
+						"all",
+						"5f8635abe64640581eb902e7"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8cd37177-7771-40f0-b273-1932fece2d6f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b7e9e872-303f-4b44-8cf2-cefe150c7460",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

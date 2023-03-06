@@ -1,0 +1,908 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Esse documento descreve os endpoints pertinentes da implementação proposta.",
+    "version": "1.0.0",
+    "title": "Desafio",
+    "contact": {
+      "email": "joelravelli@gmail.com",
+      "name": "Joel Ravelli Junior"
+    },
+    "license": {
+      "name": "GPL v3",
+      "url": "https://www.gnu.org/licenses/gpl-3.0.txt"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "conta",
+      "description": "Operações básicas sobre a entidade \\'conta\\'"
+    },
+    {
+      "name": "pessoa",
+      "description": "Operações básicas sobre a entidade \\'pessoa\\'"
+    },
+    {
+      "name": "transacao",
+      "description": "Operações de regras de negócio sobre a entidade \\'transacao\\'"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/conta": {
+      "get": {
+        "tags": [
+          "conta"
+        ],
+        "summary": "Obtem todas as contas",
+        "description": "Retornam todos as contas cadastradas no sistema",
+        "operationId": "findAll",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/conta"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "conta"
+        ],
+        "summary": "Path que realiza a criação de uma conta",
+        "description": "",
+        "operationId": "insert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Conta object that needs to be added to the system",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/conta"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/conta"
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "conta"
+        ],
+        "summary": "Path para apagar todas as contas",
+        "description": "",
+        "operationId": "delete",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/conta/criar": {
+      "post": {
+        "tags": [
+          "conta"
+        ],
+        "summary": "Path que realiza a criação de uma conta",
+        "description": "",
+        "operationId": "insertAccount",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Conta object that needs to be added to the system",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/conta"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/conta"
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/conta/{id}": {
+      "get": {
+        "tags": [
+          "conta"
+        ],
+        "summary": "Obtem uma conta por id",
+        "description": "Retorna uma conta",
+        "operationId": "findOne",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/conta"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "500": {
+            "description": "Conta not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "conta"
+        ],
+        "summary": "Atualiza uma conta por id",
+        "description": "Retorna a conta com os campos atualizados",
+        "operationId": "updateConta",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Conta id to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/conta"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/conta"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "conta"
+        ],
+        "summary": "Apaga uma conta por id",
+        "description": "Retorna a conta com os campos deletada",
+        "operationId": "deleteAccount",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Conta id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/conta"
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/conta/bloqueio/{id}": {
+      "put": {
+        "tags": [
+          "conta"
+        ],
+        "summary": "Implementar path que realiza o bloqueio de uma conta",
+        "description": "Retorna o estado da operação",
+        "operationId": "updateAccountBlock",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Conta to return",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "flagAtivo value to update. Please set flagAtivo to false or true only.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/contaBloqueio"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/pessoa": {
+      "get": {
+        "tags": [
+          "pessoa"
+        ],
+        "summary": "Obtem todas as pessoas",
+        "description": "Retornam todos as contas pessoas no sistema",
+        "operationId": "findAllPessoa",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/pessoa"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "pessoa"
+        ],
+        "summary": "Path que realiza a criação de uma pessoa",
+        "description": "Insere uma pessoa",
+        "operationId": "insertPessoa",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Pessoa object that needs to be added to the system",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pessoa"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/pessoa"
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "pessoa"
+        ],
+        "summary": "Path para apagar todas as pessoas",
+        "description": "",
+        "operationId": "deletePessoa",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/pessoa/{id}": {
+      "get": {
+        "tags": [
+          "pessoa"
+        ],
+        "summary": "Obtem uma conta por id",
+        "description": "Retorna uma pessoa",
+        "operationId": "findOnePessoa",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/pessoa"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "500": {
+            "description": "Pessoa not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "pessoa"
+        ],
+        "summary": "Atualiza uma conta por id",
+        "description": "Retorna a conta com os campos atualizados",
+        "operationId": "updatePessoa",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Pessoa id to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pessoa"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/pessoa"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "500": {
+            "description": "Pessoa not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "pessoa"
+        ],
+        "summary": "Apaga uma conta por id",
+        "description": "Retorna a conta com os campos deletada",
+        "operationId": "deletePessoaId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Conta id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/pessoa"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "500": {
+            "description": "Pessoa not found"
+          }
+        }
+      }
+    },
+    "/transacao": {
+      "get": {
+        "tags": [
+          "transacao"
+        ],
+        "summary": "Obtem todas as transacao",
+        "description": "Retornam todos as transacao cadastradas no sistema",
+        "operationId": "findAllTransacao",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/transacao"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "transacao"
+        ],
+        "summary": "Apaga todas as transação",
+        "description": "",
+        "operationId": "deleteTransacao",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/transacao/{id}": {
+      "delete": {
+        "tags": [
+          "transacao"
+        ],
+        "summary": "Apaga uma transação por ID",
+        "description": "Retorna a transação com os campos deletada",
+        "operationId": "deleteTransacaoId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Transacao id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/transacao/saldo/{id}": {
+      "get": {
+        "tags": [
+          "transacao"
+        ],
+        "summary": "Path que realiza operação de consulta de saldo em determinada conta",
+        "description": "Retorna uma conta",
+        "operationId": "findOneTransacao",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/saldoReturn"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "500": {
+            "description": "Conta not found"
+          }
+        }
+      }
+    },
+    "/transacao/extrato/{id}": {
+      "get": {
+        "tags": [
+          "transacao"
+        ],
+        "summary": "Obtem uma transacao por id",
+        "description": "Retorna uma transacao",
+        "operationId": "findOneTransacaoId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/extratoReturn"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "500": {
+            "description": "Conta not found"
+          }
+        }
+      }
+    },
+    "/transacao/deposito": {
+      "post": {
+        "tags": [
+          "transacao"
+        ],
+        "summary": "Path que realiza operação de depósito em uma conta",
+        "description": "",
+        "operationId": "insertTransacao",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Conta object that needs to be added to the system",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transacaoOp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "500": {
+            "description": "Conta not found"
+          }
+        }
+      }
+    },
+    "/transacao/saque": {
+      "post": {
+        "tags": [
+          "transacao"
+        ],
+        "summary": "path que realiza operação de saque em uma conta",
+        "description": "",
+        "operationId": "updateTransacao",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Conta id to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transacaoOp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "500": {
+            "description": "Conta not found"
+          }
+        }
+      }
+    },
+    "/transacao/all/{idConta}": {
+      "get": {
+        "tags": [
+          "transacao"
+        ],
+        "summary": "Obtem uma transacao por id",
+        "description": "Retorna a quantidade de transações",
+        "operationId": "deleteAllTransacaoByAccountId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "idConta",
+            "in": "path",
+            "description": "ID of account",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "500": {
+            "description": "Conta not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "conta": {
+      "type": "object",
+      "properties": {
+        "idPessoa": {
+          "type": "string"
+        },
+        "saldo": {
+          "type": "number",
+          "format": "double"
+        },
+        "limiteSaqueDiario": {
+          "type": "number",
+          "format": "double"
+        },
+        "flagAtivo": {
+          "type": "boolean"
+        },
+        "tipoConta": {
+          "type": "number",
+          "format": "int32",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "dataCriacao": {
+          "type": "string"
+        }
+      }
+    },
+    "contaBloqueio": {
+      "type": "object",
+      "properties": {
+        "flagAtivo": {
+          "type": "boolean"
+        }
+      }
+    },
+    "pessoa": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string"
+        },
+        "cpf": {
+          "type": "string"
+        },
+        "dataNascimento": {
+          "type": "string"
+        }
+      }
+    },
+    "transacao": {
+      "type": "object",
+      "properties": {
+        "idConta": {
+          "type": "string"
+        },
+        "valor": {
+          "type": "number",
+          "format": "double"
+        },
+        "dataTransacao": {
+          "type": "string"
+        }
+      }
+    },
+    "transacaoOp": {
+      "type": "object",
+      "properties": {
+        "idConta": {
+          "type": "string"
+        },
+        "valor": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "extratoReturn": {
+      "type": "object",
+      "properties": {
+        "dataTransacao": {
+          "type": "string"
+        },
+        "valor": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "extratoCall": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string"
+        },
+        "endDate": {
+          "type": "string"
+        }
+      }
+    },
+    "saldoReturn": {
+      "type": "object",
+      "properties": {
+        "saldo": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
