@@ -1,11 +1,10 @@
 const request = require("supertest");
+const mongoose = require("mongoose");
 const app = require("../app");
 const constants = require("../resources/appConstants")
 
 beforeAll(async () => {
-    it("test MongoDB connection", async () => {
-        await mongoose.connect(constants.mongodbUrlTest, { useNewUrlParser: true });
-    });
+    await mongoose.connect(constants.mongoURI);
 });
 
 describe('Pessoa API', () => {
@@ -133,3 +132,12 @@ describe('Pessoa API', () => {
     });
   
   });
+
+
+afterAll(async () => {
+    try {
+        await mongoose.connection.close();
+    } catch (e) {
+        // connection already closed or error during cleanup
+    }
+});

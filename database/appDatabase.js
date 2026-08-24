@@ -3,12 +3,9 @@ const dbConfig = require('../resources/appConstants');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.set('debug', false);
-mongoose.set('useCreateIndex', true);
-mongoose.set('useFindAndModify', false);
-
 const db = {};
 db.mongoose = mongoose;
-db.url = dbConfig.mongodbUrl;
+db.url = dbConfig.mongoURI;
 db.pessoa = require('./model/pessoa')(mongoose);
 db.conta = require('./model/conta')(mongoose);
 db.transacao = require('./model/transacao')(mongoose);

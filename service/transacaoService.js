@@ -118,7 +118,7 @@ transacaoService.updataSaldo = async function(transacaoDatabase, transacaoType) 
 
     // Update "saldo"
     if (!hasError) {
-        await ContaDatabase.findByIdAndUpdate(conta.id, conta, { useFindAndModify: false }).session(sessionTransaction)
+        await ContaDatabase.findByIdAndUpdate(conta.id, conta, ).session(sessionTransaction)
             .then((data) => {
                 if (!data) {
                     errorMsg = {

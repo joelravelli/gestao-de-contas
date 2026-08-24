@@ -106,7 +106,7 @@ exports.update = (req, res) => {
   // ID from HTTP request
   const id = req.params.id;
 
-  ContaDatabase.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  ContaDatabase.findByIdAndUpdate(id, req.body, )
     .then((data) => {
       if (!data) {
         res.status(404).send({
@@ -125,7 +125,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   // ID from HTTP request
   const id = req.params.id;
-  ContaDatabase.findByIdAndRemove(id, { useFindAndModify: false })
+  ContaDatabase.findOneAndDelete(id)
     .then((data) => {
       if (!data) {
         res.status(404).send({
